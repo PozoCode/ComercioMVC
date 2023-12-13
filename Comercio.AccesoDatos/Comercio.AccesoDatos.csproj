@@ -17,4 +17,9 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Comercio.Modelos\Comercio.Modelos.csproj" />
+    <ProjectReference Include="..\Comercio.Utilidades\Comercio.Utilidades.csproj" />
+  </ItemGroup>
+
 </Project>

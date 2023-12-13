@@ -1,4 +1,4 @@
-using ComercioMVC.Data;
+using Comercio.AccesoDatos.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

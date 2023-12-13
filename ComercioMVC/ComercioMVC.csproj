@@ -18,4 +18,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Comercio.AccesoDatos\Comercio.AccesoDatos.csproj" />
+    <ProjectReference Include="..\Comercio.Modelos\Comercio.Modelos.csproj" />
+    <ProjectReference Include="..\Comercio.Utilidades\Comercio.Utilidades.csproj" />
+  </ItemGroup>
+
 </Project>

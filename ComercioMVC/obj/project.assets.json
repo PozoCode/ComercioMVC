@@ -951,6 +951,47 @@
             "rid": "win"
           }
         }
+      },
+      "Comercio.AccesoDatos/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Comercio.Modelos": "1.0.0",
+          "Comercio.Utilidades": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.25",
+          "Microsoft.EntityFrameworkCore": "6.0.25",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.25",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25"
+        },
+        "compile": {
+          "bin/placeholder/Comercio.AccesoDatos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Comercio.AccesoDatos.dll": {}
+        }
+      },
+      "Comercio.Modelos/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Comercio.Utilidades": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Comercio.Modelos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Comercio.Modelos.dll": {}
+        }
+      },
+      "Comercio.Utilidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Comercio.Utilidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Comercio.Utilidades.dll": {}
+        }
       }
     }
   },
@@ -2442,10 +2483,28 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Comercio.AccesoDatos/1.0.0": {
+      "type": "project",
+      "path": "../Comercio.AccesoDatos/Comercio.AccesoDatos.csproj",
+      "msbuildProject": "../Comercio.AccesoDatos/Comercio.AccesoDatos.csproj"
+    },
+    "Comercio.Modelos/1.0.0": {
+      "type": "project",
+      "path": "../Comercio.Modelos/Comercio.Modelos.csproj",
+      "msbuildProject": "../Comercio.Modelos/Comercio.Modelos.csproj"
+    },
+    "Comercio.Utilidades/1.0.0": {
+      "type": "project",
+      "path": "../Comercio.Utilidades/Comercio.Utilidades.csproj",
+      "msbuildProject": "../Comercio.Utilidades/Comercio.Utilidades.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Comercio.AccesoDatos >= 1.0.0",
+      "Comercio.Modelos >= 1.0.0",
+      "Comercio.Utilidades >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.25",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.25",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.25",
@@ -2480,7 +2539,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\dev\\ComercioMVC\\Comercio.AccesoDatos\\Comercio.AccesoDatos.csproj": {
+              "projectPath": "D:\\dev\\ComercioMVC\\Comercio.AccesoDatos\\Comercio.AccesoDatos.csproj"
+            },
+            "D:\\dev\\ComercioMVC\\Comercio.Modelos\\Comercio.Modelos.csproj": {
+              "projectPath": "D:\\dev\\ComercioMVC\\Comercio.Modelos\\Comercio.Modelos.csproj"
+            },
+            "D:\\dev\\ComercioMVC\\Comercio.Utilidades\\Comercio.Utilidades.csproj": {
+              "projectPath": "D:\\dev\\ComercioMVC\\Comercio.Utilidades\\Comercio.Utilidades.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

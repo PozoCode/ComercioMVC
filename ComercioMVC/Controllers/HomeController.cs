@@ -1,4 +1,4 @@
-﻿using ComercioMVC.Models;
+﻿using Comercio.Modelos.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

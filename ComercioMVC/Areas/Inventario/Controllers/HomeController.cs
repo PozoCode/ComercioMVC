@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace ComercioMVC.Controllers
+namespace ComercioMVC.Areas.Inventario.Controllers
 {
+    [Area("Inventario")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

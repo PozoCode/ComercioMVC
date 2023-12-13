@@ -1,4 +1,4 @@
-namespace ComercioMVC.Models
+namespace Comercio.Modelos.ViewModels
 {
     public class ErrorViewModel
     {

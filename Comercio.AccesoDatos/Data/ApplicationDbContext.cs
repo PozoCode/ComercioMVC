@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Comercio.Modelos;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Comercio.AccesoDatos.Data
 {
@@ -9,5 +11,14 @@ namespace Comercio.AccesoDatos.Data
             : base(options)
         {
         }
+
+        public DbSet<BodegaModel> Bodegas { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
     }
+
 }

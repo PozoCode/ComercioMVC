@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Comercio.Utilidades
+﻿namespace Comercio.Utilidades
 {
-    internal class DS
+    public static class DS
     {
+        public const String BodegaOk = "Bodega Agregado con éxito";
+
+        public const String BodegaKo = "Error al agregar bodega";
+
+        public const String BodegaDelete = "Se ha eliminado la bodega";
     }
 }

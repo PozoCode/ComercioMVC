@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Comercio.Modelos
 {
@@ -9,6 +10,7 @@ namespace Comercio.Modelos
 
         [Required(ErrorMessage ="El campo Nombre es obligatorio")]
         [MaxLength(60, ErrorMessage ="El campo Nombre debe tener 60 caracteres cómo máximo")]
+        //[Remote(action: "ValidarNombre", controller: "Bodega", AdditionalFields = nameof(Id), ErrorMessage = "El nombre de la Bodega ya está en uso")]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "El campo Descripcion es obligatorio")]

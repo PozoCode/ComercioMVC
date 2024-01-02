@@ -1,0 +1,31 @@
+﻿@using Comercio.Utilidades;
+
+@if(TempData[DS.BodegaOk] != null){
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.success('@TempData[DS.BodegaOk]');
+    </script>
+}
+
+
+@if (TempData[DS.BodegaKo] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.error('@TempData[DS.BodegaKo]');
+    </script>
+}
+
+@if (TempData[DS.BodegaDelete] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.error('@TempData[DS.BodegaDelete]');
+    </script>
+}

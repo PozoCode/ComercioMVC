@@ -25,7 +25,7 @@ namespace Comercio.AccesoDatos.Repositorio
         /// </summary>
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _db.Dispose();
         }
 
         /// <summary>

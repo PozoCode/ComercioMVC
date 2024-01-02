@@ -1,0 +1,10 @@
+﻿@model int;
+
+<div class="row justify-content-evenly">
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-warning" onfocus="false" asp-route-id="@Model"><i class="bi bi-pencil-square"></i> Actualizar</button>
+    </div>
+    <div class="col-md-4">
+        <a asp-action="Index" class="btn btn-danger"> <i class="bi bi-arrow-return-left"></i> Regresar</a>
+    </div>
+</div>

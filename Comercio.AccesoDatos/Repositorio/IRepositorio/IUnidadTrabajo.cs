@@ -5,6 +5,8 @@
 
         IBodegaRepositorio Bodega { get; }
 
+        ICategoriaRepositorio Categoria { get; }
+
         Task Guardar();
     }
 }

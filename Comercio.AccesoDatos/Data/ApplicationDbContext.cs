@@ -14,6 +14,8 @@ namespace Comercio.AccesoDatos.Data
 
         public DbSet<BodegaModel> Bodegas { get; set; }
 
+        public DbSet<CategoriaModel> Categorias { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

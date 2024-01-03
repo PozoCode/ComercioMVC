@@ -1,10 +1,5 @@
 ﻿using Comercio.AccesoDatos.Data;
 using Comercio.AccesoDatos.Repositorio.IRepositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Comercio.AccesoDatos.Repositorio
 {
@@ -14,10 +9,13 @@ namespace Comercio.AccesoDatos.Repositorio
 
         public IBodegaRepositorio Bodega { get; set; }
 
+        public ICategoriaRepositorio Categoria { get; set; }
+
         public UnidadTrabajo(ApplicationDbContext db)
         {
             _db = db;
             Bodega = new BodegaRepositorio(_db);
+            Categoria = new CategoriaRepositorio(_db);
         }
 
         /// <summary>

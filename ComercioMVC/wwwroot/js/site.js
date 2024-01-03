@@ -60,3 +60,29 @@ function DeleteBodega(id) {
         });
     });
 };
+
+function DeleteCategoria(id) {
+    $(document).ready(function () {
+        swal({
+            title: "¿Estás seguro de Eliminar la Categoria?",
+            text: "Este registro no se podrá recuperar",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((borrar) => {
+            if (borrar) {
+                debugger
+                $.ajax({
+                    type: 'POST',
+                    url: 'Categoria/Delete/' + id,
+                    success: function (data) {
+                        if (data.success) {
+                            var url = 'Categoria/Index';
+                            window.location.href = url;
+                        }
+                    }
+                });
+            }
+        });
+    });
+};

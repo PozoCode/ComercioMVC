@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace ComercioMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BodegaController : Controller
+    public class CategoriaController : Controller
     {
         // Instanciamos la unidad de trabajo para tener acceso a todos nuestros métodos
         private readonly IUnidadTrabajo _unidadTrabajo;
 
-        public BodegaController(IUnidadTrabajo unidadTrabajo)
+        public CategoriaController(IUnidadTrabajo unidadTrabajo)
         {
             _unidadTrabajo = unidadTrabajo;
         }
@@ -19,8 +19,8 @@ namespace ComercioMVC.Areas.Admin.Controllers
         #region Index
         public async Task<IActionResult> Index()
         {
-            var bodegas = await _unidadTrabajo.Bodega.GetAll();
-            return View(bodegas);
+            var categorias = await _unidadTrabajo.Categoria.GetAll();
+            return View(categorias);
         }
         #endregion Index
 
@@ -28,25 +28,25 @@ namespace ComercioMVC.Areas.Admin.Controllers
         /// <summary>
         /// Método para visualizar el formulario de inserción o actualización de una bogega
         /// </summary>
-        /// <returns>Formulario para la actualización o inserción de una bodega</returns>
+        /// <returns>Formulario para la actualización o inserción de una categoria</returns>
         public async Task<IActionResult> Upsert(int? id)
         {
-            BodegaModel bodega = new BodegaModel();
+            CategoriaModel categoria = new CategoriaModel();
 
             if (id == null)
             {
-                bodega.Estado = true;
-                return View(bodega);
+                categoria.Estado = true;
+                return View(categoria);
             }
 
-            bodega = await _unidadTrabajo.Bodega.Get(id.GetValueOrDefault());
+            categoria = await _unidadTrabajo.Categoria.Get(id.GetValueOrDefault());
 
-            if (bodega == null)
+            if (categoria == null)
             {
                 return NotFound();
             }
 
-            return View(bodega);
+            return View(categoria);
         }
         #endregion Upsert
 
@@ -56,18 +56,18 @@ namespace ComercioMVC.Areas.Admin.Controllers
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upsert(BodegaModel bodega)
+        public async Task<IActionResult> Upsert(CategoriaModel categoria)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if (bodega.Id != 0)
+                if (categoria.Id != 0)
                 {
-                    _unidadTrabajo.Bodega.Update(bodega);
+                    _unidadTrabajo.Categoria.Update(categoria);
                     TempData[DS.BodegaOk] = "Actualizado correctamente";
                 }
                 else
                 {
-                    await _unidadTrabajo.Bodega.Add(bodega);
+                    await _unidadTrabajo.Categoria.Add(categoria);
                     TempData[DS.BodegaOk] = "Agregado correctamente";
                 }
 
@@ -75,31 +75,31 @@ namespace ComercioMVC.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(bodega);
+            return View(categoria);
 
         }
         #endregion
 
         #region Delete
         /// <summary>
-        /// Método que permite eliminar una bodega
+        /// Método que permite eliminar una categoria
         /// </summary>
         /// <returns>Json que se usará para las alertas</returns>
         public async Task<IActionResult> Delete(int id)
         {
-            var bodega = await _unidadTrabajo.Bodega.Get(id);
+            var categoria = await _unidadTrabajo.Categoria.Get(id);
 
-            if(bodega == null)
+            if (categoria == null)
             {
                 TempData[DS.BodegaDelete] = "Error al eliminar bodega";
                 return Json(new { success = false, message = "Error al borrar registro" });
             }
-            _unidadTrabajo.Bodega.Remove(bodega);
+            _unidadTrabajo.Categoria.Remove(categoria);
             await _unidadTrabajo.Guardar();
-            
+
             TempData[DS.BodegaOk] = "Se ha eliminado un registro";
             return Json(new { success = true, message = "Bodega borrada exitosamente" });
-            
+
         }
 
         #endregion
@@ -128,19 +128,21 @@ namespace ComercioMVC.Areas.Admin.Controllers
         {
             bool existe = false;
 
-            var bodegas = await _unidadTrabajo.Bodega.GetAll();
+            var categorias = await _unidadTrabajo.Categoria.GetAll();
 
             if (id == 0)
             {
-                existe = bodegas.Any(x => x.Nombre.ToLower().Trim() == nombre.ToLower().Trim());
+                existe = categorias.Any(x => x.Nombre.ToLower().Trim() == nombre.ToLower().Trim());
             }
             else
             {
-                existe = bodegas.Any(x => x.Nombre.ToLower().Trim() == nombre.ToLower().Trim() && x.Id != id);
+                existe = categorias.Any(x => x.Nombre.ToLower().Trim() == nombre.ToLower().Trim() && x.Id != id);
             }
 
             return Json(new { disponible = !existe });
         }
+
+
         #endregion
     }
 }

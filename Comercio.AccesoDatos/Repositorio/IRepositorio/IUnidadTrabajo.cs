@@ -7,6 +7,8 @@
 
         ICategoriaRepositorio Categoria { get; }
 
+        IMarcaRepositorio Marca { get; }
+
         Task Guardar();
     }
 }

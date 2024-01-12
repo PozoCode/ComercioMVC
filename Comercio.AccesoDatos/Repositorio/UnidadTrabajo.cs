@@ -11,11 +11,14 @@ namespace Comercio.AccesoDatos.Repositorio
 
         public ICategoriaRepositorio Categoria { get; set; }
 
+        public IMarcaRepositorio Marca { get; set; }
+
         public UnidadTrabajo(ApplicationDbContext db)
         {
             _db = db;
             Bodega = new BodegaRepositorio(_db);
             Categoria = new CategoriaRepositorio(_db);
+            Marca = new MarcaRepositorio(_db);
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ function FilterTable() {
         tabla = $('#tblBodegas').DataTable({
             language: {
                 "decimal": "",
-                "emptyTable": "No hay información",
+                "emptyTable": "No se han encontrado registros",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
                 "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
                 "infoFiltered": "(Filtrado de _MAX_ total entradas)",
@@ -78,6 +78,33 @@ function DeleteCategoria(id) {
                     success: function (data) {
                         if (data.success) {
                             var url = 'Categoria/Index';
+                            window.location.href = url;
+                        }
+                    }
+                });
+            }
+        });
+    });
+};
+
+
+function DeleteMarca(id) {
+    $(document).ready(function () {
+        swal({
+            title: "¿Estás seguro de Eliminar la Marca?",
+            text: "Este registro no se podrá recuperar",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((borrar) => {
+            if (borrar) {
+                debugger
+                $.ajax({
+                    type: 'POST',
+                    url: 'Marca/Delete/' + id,
+                    success: function (data) {
+                        if (data.success) {
+                            var url = 'Marca/Index';
                             window.location.href = url;
                         }
                     }

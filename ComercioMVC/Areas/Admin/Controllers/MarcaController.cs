@@ -97,8 +97,8 @@ namespace ComercioMVC.Areas.Admin.Controllers
             _unidadTrabajo.Marca.Remove(marca);
             await _unidadTrabajo.Guardar();
 
-            TempData[DS.BodegaOk] = "Se ha eliminado un registro";
-            return Json(new { success = true, message = "marca borrada exitosamente" });
+            TempData[DS.BodegaOk] = $"Se ha eliminado la marca {marca.Nombre}";
+            return Json(new { success = true, message = $"marca {marca.Nombre} borrada exitosamente" });
 
         }
 

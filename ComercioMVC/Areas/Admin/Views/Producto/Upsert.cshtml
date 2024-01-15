@@ -1,0 +1,117 @@
+﻿@using Comercio.Modelos.ViewModels;
+@model ProductoVM;
+
+@{
+    var titulo = "Agregar Categoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <form method="post">
+            <div class="row border-0">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+
+            @if (Model.Producto.Id != 0)
+            {
+                // Update
+                titulo = "Actualizar Prodcuto";
+                <input type="hidden" asp-for="Producto.Id" id="Id"/>
+            }
+            <div class="text-center">
+                <h2 class="text-primary">@titulo</h2>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="Nombre" class="form-label fw-bold">Número de Serie</label>
+                    <input class="form-control" asp-for="Producto.NumeroSerie" placeholder="Ingrese el número de serie del producto" id="Nombre">
+                    <span asp-validation-for="Producto.NumeroSerie" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Producto.CategoriaId" class="form-label fw-bold">Categoría</label>
+                    <select asp-for="Producto.CategoriaId" asp-items="@Model.CategoriaList" class="form-select">
+                        <option disabled selected>-- Seleccione una Categoria --</option>
+                    </select>
+                    <span asp-validation-for="MarcaList" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Nombre" class="form-label fw-bold">Categoria</label>
+                    <input class="form-control" asp-for="CategoriaList" placeholder="Ingrese la categoria" id="Marca">
+                    <span asp-validation-for="CategoriaList" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-md-4">
+                    <label for="Nombre" class="form-label fw-bold">Costo</label>
+                    <input class="form-control" asp-for="Producto.Costo" placeholder="Ingrese costo del producto" id="Costo">
+                    <span asp-validation-for="Producto.Costo" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Nombre" class="form-label fw-bold">Precio</label>
+                    <input class="form-control" asp-for="Producto.Precio" placeholder="Ingrese el precio del producto" id="Precio">
+                    <span asp-validation-for="Producto.Precio" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="form-label fw-bold">Estado</label>
+                    <select asp-for="Producto.Estado" class="form-control form-select" aria-label="Estado">
+                        <option value=true>Activo</option>
+                        <option value=false>Suspendido</option>
+                    </select>
+                    <span asp-validation-for="Producto.Estado" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-md-9">
+                    <label for="Descripcion" class="form-label fw-bold">Descripción</label>
+                    <textarea asp-for="Producto.Descripcion" class="form-control form-control-sm" rows="3" placeholder="Ingrese una descripción"></textarea>
+                    <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="row mt-3">
+                @if (Model.Producto.Id != 0)
+                {
+                    <partial name="_BtnUpdateCancel" model="Model.Producto.Id" ) />
+                }
+                else
+                {
+                    <partial name="_BtnSaveCancel" />
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+@*Permite mostrar los mensajes de las validaciones*@
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $("#Nombre").on("change", function () {
+                var nombre = $(this).val();
+                var id = $("#Id").val();
+
+                $.ajax({
+                    url: "@Url.Action("ValidarNombre","Categoria")",
+                    type: "POST",
+                    data: { Nombre: nombre, Id: id },
+                    success: function (result) {
+                        if (!result.disponible) {
+                            $("span[data-valmsg-for='Nombre']").text("El nombre '" + nombre + "' ya está registrado");
+
+                            var inputNombre = document.getElementById("Nombre");
+                            inputNombre.value = "";
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
+}

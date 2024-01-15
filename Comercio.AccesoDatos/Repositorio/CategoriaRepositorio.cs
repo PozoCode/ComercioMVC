@@ -18,7 +18,7 @@ namespace Comercio.AccesoDatos.Repositorio
         /// </summary>
         public void Update(CategoriaModel categoria)
         {
-            var categoriaBD = _db.Bodegas.FirstOrDefault(x => x.Id == categoria.Id);
+            var categoriaBD = _db.Categorias.FirstOrDefault(x => x.Id == categoria.Id);
 
             if (categoriaBD != null)
             {

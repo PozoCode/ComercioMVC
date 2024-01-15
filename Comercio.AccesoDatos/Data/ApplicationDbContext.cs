@@ -18,6 +18,8 @@ namespace Comercio.AccesoDatos.Data
 
         public DbSet<MarcaModel> Marcas { get; set; }
 
+        public DbSet<ProductoModel> Productos { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
